@@ -1,0 +1,24 @@
+Comment from the professor:
+LAB1 
+Very good. But please consider the following comments.
+1.4: Your plot for comparing training vs. validation error with respect to K is interesting but the more standard way to show this is to have K on horizontal axis and plot training and validation error in the same figure. Also, you have not commented on model complexity (smaller K means a higher capacity kNN model).
+1.5: The optimal K according to cross entropy should be K=6. There should be a problem in your code; I mostly doubt about the following line for computing cross entropy:
+temp[length(temp)+1] <- (y$fitted.values[i] == c)*log(y$prob[i,as.character(c)]+1e-15)
+Note that the first term should be the ‘true’ (ground truth) class label which comes from the data, and not the model prediction.
+3.1: You are right about the observed patterns but the main point here is that logistic regression is basically a linear classifier model and its decision boundary is always a line or plane. In this problem, it seems that a line cannot separate the two classes fairly well.  
+
+
+LAB2 
+Great job! You passed.
+2.6 You could have also said that the decision tree is better because it has a larger AUC.
+3.3 You forgot to scale the response variable ViolentCrimesPerPop. This is why your MSEs are off.
+3.4 You were required to use optim() to minimize the training error, not the minus log likelihood. So there is no sigma parameter involved and it is not necessary to compute the minus log likelihood for each iteration. You should have computed the training and test errors only instead. 
+
+LAB BLOCK2 
+It is good to note that the log-likelihood on the data is also largest with M=4 (possible overfitting).   
+
+LAB3 
+1. Nice solution, maybe the bandwidth parameter for the days is a bit off (high values for days far away).
+3.2 Think about why Relu doesn’t give good results.
+3.5 Generally correct, however other models would also most likely not solve the problem. Predicting the arcsine is not trivial. 
+
